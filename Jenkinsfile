@@ -36,7 +36,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ansible', keyFileVariable: 'SSH_KEY')]) {
                         sh """
                             export PATH=\$PATH:${ANSIBLE_HOME}
-                            ansible-playbook -i /path/to/hosts.ini /path/to/deploy.yml --extra-vars "FLASK_APP_HOME=${FLASK_APP_HOME} VENV_PATH=${VENV_PATH}"
+                            ansible-playbook -i hosts.ini deploy.yml --extra-vars "FLASK_APP_HOME=${FLASK_APP_HOME} VENV_PATH=${VENV_PATH}"
                         """
                     }
                 }
