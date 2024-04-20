@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'Deployment-server'
+    }
     environment {
         ANSIBLE_HOME = '/usr/bin'
         FLASK_APP_HOME = 'app.py'
