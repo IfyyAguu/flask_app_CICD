@@ -13,20 +13,19 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/IfyyAguu/flask_app_CICD.git'
             }
         }
-
+        
         stage('Build') {
             steps {
                 // Install dependencies and package Flask app
                 sh "python3 -m venv ${VENV_PATH}"
-                // Activate the virtual environment and install requirements
-                sh "source ${VENV_PATH}/bin/activate && pip install -r requirements.txt"
+                    // Activate the virtual environment
+                sh 'bash -c "source $VENV_PATH/bin/activate && pip install -r requirements.txt"'
             }
         }
 
         stage('Test') {
             steps {
-                // Activate the virtual environment and run tests
-                sh "source ${VENV_PATH}/bin/activate && python3 test.py"
+                sh 'bash -c "source ${VENV_PATH}/bin/activate && python3 test.py"'
             }
         }
 
