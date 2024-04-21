@@ -21,6 +21,11 @@
         - python3-pip
         - git
 
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+
     - name: Clean destination directory
       file:
         path: /opt/flask_app/flask_app_CICD
