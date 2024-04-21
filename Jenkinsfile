@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        FLASK_APP_HOME = 'app.py'
+        FLASK_APP_HOME = 'flask_app_CICD'
         VENV_PATH = 'flaskvenv'
     }
     stages {
