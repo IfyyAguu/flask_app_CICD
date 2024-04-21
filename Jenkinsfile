@@ -1,11 +1,8 @@
 pipeline {
     agent any
     environment {
-        ANSIBLE_HOME = '/usr/bin'
         FLASK_APP_HOME = 'app.py'
         VENV_PATH = "flaskvenv"
-        ANSIBLE_SERVER = '172-31-17-57'
-        ANSIBLE_USER = 'centos'
     }
     stages {
         stage('Checkout code') {
