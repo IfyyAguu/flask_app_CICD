@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        labels 'CICD-server'
+        label 'CICD-server'
     }
     environment {
         FLASK_APP_HOME = 'flask_app_CICD'
