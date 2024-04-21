@@ -1,9 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        labels 'CICD-server'
+        )
     environment {
         FLASK_APP_HOME = 'flask_app_CICD'
         VENV_PATH = 'flaskvenv'
-        SSH_KEY = credentials('ansible') 
     }
     stages {
         stage('Checkout code') {
@@ -29,8 +30,7 @@ pipeline {
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'hosts.ini',
-                        privateKey: SSH_KEY,
-                        user: 'centos',
+                        credentialsId: 'cicd',
                         extras: "-e FLASK_APP_HOME=${FLASK_APP_HOME} -e VENV_PATH=${VENV_PATH}"
                     )
                 }
