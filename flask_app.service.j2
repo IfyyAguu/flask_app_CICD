@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask Web App
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/flask_app/{{ flask_app_home }}
+Environment="PATH={{ venv_path }}/bin"
+ExecStart={{ venv_path }}/bin/python {{ flask_app_home }}/app.py
+
+[Install]
+WantedBy=multi-user.target

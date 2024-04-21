@@ -29,17 +29,18 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+      stage('Deploy') {
             steps {
                 script {
-                    // Execute Ansible playbook remotely
-                    sshagent(['ansible']) {
-                        sh "ansible-playbook -i ${ANSIBLE_HOME}/hosts.ini ${ANSIBLE_HOME}/deploy.yml --extra-vars 'FLASK_APP_HOME=${FLASK_APP_HOME} VENV_PATH=${VENV_PATH}'"
-                    }
+                    ansiblePlaybook(
+                        playbook: "deploy.yml",
+                        inventory: 'hosts.ini',
+                        credentialsId: 'ansible',
+                        extras: "-e FLASK_APP_HOME=${FLASK_APP_HOME} -e VENV_PATH=${VENV_PATH}"
+                    )
                 }
             }
-        }
-    }
+      }
 
     post {
         always {
