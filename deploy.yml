@@ -21,6 +21,11 @@
         - python3-pip
         - git
 
+    - name: Clean destination directory
+      file:
+        path: /opt/flask_app/flask_app_CICD
+        state: absent
+
     - name: Clone Git repository
       git:
         repo: https://github.com/IfyyAguu/flask_app_CICD.git
