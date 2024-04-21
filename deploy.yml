@@ -8,7 +8,7 @@
     venv_path: "/opt/flask_app/{{ flask_app_home }}/venv"
     
   tasks:
-    - name: Update apt package cache
+    - name: Update apt cache
       apt:
         update_cache: yes
 
