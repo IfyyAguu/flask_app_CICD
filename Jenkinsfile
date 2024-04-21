@@ -4,15 +4,18 @@ pipeline {
         ANSIBLE_HOME = '/usr/bin'
         FLASK_APP_HOME = 'app.py'
         VENV_PATH = "flaskvenv"
+        ANSIBLE_SERVER = '172-31-17-57'
+        ANSIBLE_USER = 'centos'
     }
     stages {
         stage('Checkout code') {
             steps {
                 echo "Checking out source code"
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/IfyyAguu/flask_app_CICD.git/'
+                // Checkout the source code from Git repository
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/IfyyAguu/flask_app_CICD.git'
             }
         }
-
+        
         stage('Build') {
             steps {
                 // Install dependencies and package Flask app
@@ -21,7 +24,6 @@ pipeline {
                 sh 'bash -c "source $VENV_PATH/bin/activate && pip install -r requirements.txt"'
             }
         }
-
 
         stage('Test') {
             steps {
