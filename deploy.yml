@@ -21,6 +21,13 @@
         - python3-pip
         - git
 
+    - name: Clone Git repository
+      git:
+        repo: https://github.com/IfyyAguu/flask_app_CICD.git
+        dest: /opt/flask_app/{{ flask_app_home }}
+        version: ify-branch  # Specify the branch or tag to checkout
+
+
     - name: Create Python virtual environment
       command: python3 -m venv "{{ venv_path }}"
       vars:
