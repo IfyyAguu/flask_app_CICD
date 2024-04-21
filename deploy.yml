@@ -9,11 +9,11 @@
     
   tasks:
     - name: Update apt cache
-      apt:
+      yum:
         update_cache: yes
 
     - name: Install required packages (Python 3, pip, git)
-      apt:
+      yum:
         name: "{{ item }}"
         state: present
       loop:
